@@ -17,8 +17,7 @@ class Feedback extends Component {
       picture: imagem,
     };
     const sortedRanking = [...rankingDB, ranking];
-    const NUMBER_ONE = 1;
-    sortedRanking.sort((a, b) => ((a.score < b.score ? 1 : -NUMBER_ONE)));
+    sortedRanking.sort((a, b) => ((b.score - a.score)));
     localStorage.setItem('ranking', JSON.stringify(sortedRanking));
   }
 
