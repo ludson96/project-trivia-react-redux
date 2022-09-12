@@ -13,19 +13,19 @@ class Ranking extends Component {
 
   render() {
     const rankingDB = JSON.parse(localStorage.getItem('ranking'));
-    if (rankingDB === null) {
-      return <p>Ranking Vazio...</p>;
-    }
+
     return (
       <div data-testid="ranking-title">
         <h1> Ranking </h1>
-        {rankingDB.map((e, i) => (
-          <div key={ i }>
-            <img src={ e.picture } alt="imagem User" />
-            <p data-testid={ `player-name-${i}` }>{e.name}</p>
-            <p data-testid={ `player-score-${i}` }>{e.score}</p>
-          </div>
-        ))}
+        {rankingDB === null ? <p>Ranking vazio ...</p> : (
+          rankingDB.map((e, i) => (
+            <div key={ i }>
+              <img src={ e.picture } alt="imagem User" />
+              <p data-testid={ `player-name-${i}` }>{e.name}</p>
+              <p data-testid={ `player-score-${i}` }>{e.score}</p>
+            </div>
+          ))
+        )}
 
         <button
           data-testid="btn-go-home"

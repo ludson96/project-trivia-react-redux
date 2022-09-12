@@ -17,16 +17,10 @@ class Feedback extends Component {
       picture: imagem,
     };
     const sortedRanking = [...rankingDB, ranking];
-    sortedRanking.sort(this.sortRanking);
+    const NUMBER_ONE = 1;
+    sortedRanking.sort((a, b) => ((a.score < b.score ? 1 : -NUMBER_ONE)));
     localStorage.setItem('ranking', JSON.stringify(sortedRanking));
   }
-
-  sortRanking = (a, b) => {
-    const NUMBER_ONE = 1;
-    if (a.score > b.score) return -NUMBER_ONE;
-    if (a.score < b.score) return 1;
-    return 0;
-  };
 
   checkCountOfCorretAnswer = () => {
     const { assertions } = this.props;

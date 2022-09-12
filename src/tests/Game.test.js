@@ -2,14 +2,11 @@ import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Switch, Route } from 'react-router-dom';
-import App from '../App';
-import Login from '../Pages/Login';
 import Game from '../Pages/Game';
 import Feedback from '../Components/Feedback';
 import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux'
 
 describe ('Test Game page', () => {
-  const GamePage = '/game';
   const INITIAL_STATE = {
     player: {
       results: {
