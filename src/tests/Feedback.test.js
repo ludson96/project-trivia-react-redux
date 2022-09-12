@@ -74,7 +74,4 @@ describe ('Test Feedback page', () => {
     userEvent.click(btnRanking)
     expect(history.location.pathname).toBe('/ranking');
   })
-
-
-  
 })
