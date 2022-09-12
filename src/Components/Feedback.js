@@ -20,7 +20,7 @@ class Feedback extends Component {
     const NUMBER_ONE = 1;
     sortedRanking.sort((a, b) => ((a.score < b.score ? 1 : -NUMBER_ONE)));
     localStorage.setItem('ranking', JSON.stringify(sortedRanking));
-  };
+  }
 
   checkCountOfCorretAnswer = () => {
     const { assertions } = this.props;

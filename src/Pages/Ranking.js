@@ -13,7 +13,7 @@ class Ranking extends Component {
 
   render() {
     const rankingDB = JSON.parse(localStorage.getItem('ranking'));
-    
+
     return (
       <div data-testid="ranking-title">
         <h1> Ranking </h1>
@@ -26,7 +26,6 @@ class Ranking extends Component {
             </div>
           ))
         )}
-        
 
         <button
           data-testid="btn-go-home"
