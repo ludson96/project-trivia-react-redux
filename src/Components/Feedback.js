@@ -26,7 +26,8 @@ class Feedback extends Component {
   render() {
     const { score, assertions } = this.props;
     return (
-      <div data-testid="feedback-text">
+      <div>
+        {/* data-testid="feedback-text" foi retirado por causa do test da page feedback */}
         Feedback
         <Header />
         <section data-testid="feedback-text">
