@@ -1,4 +1,4 @@
-# Repositório do projeto de Trivia
+# Repositório do projeto de Trivia 🎲
 
 # 🚧 Estilização em desenvolvimento ! 🚧
 
