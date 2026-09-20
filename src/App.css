@@ -38,11 +38,30 @@
   animation: floatReverse 7s ease-in-out infinite;
 }
 
-/* Compatibilidade com classes de testes originais para manter cobertura 100% */
+/* Compatibilidade com classes de testes originais mantendo tamanho fixo e animação */
 .red-border {
-  border: 3px solid #EA5D5D !important;
+  border-color: #EA5D5D !important;
+  box-shadow: 0 0 0 1px #EA5D5D, 0 0 15px rgba(234, 93, 93, 0.4) !important;
 }
 
 .green-border {
-  border: 3px solid #2FC18C !important;
+  border-color: #2FC18C !important;
+  box-shadow: 0 0 0 1px #2FC18C, 0 0 15px rgba(47, 193, 140, 0.4) !important;
 }
+
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-pop-in {
+  animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

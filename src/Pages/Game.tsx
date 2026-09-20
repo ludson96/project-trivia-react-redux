@@ -143,21 +143,25 @@ export const Game: React.FC = () => {
           />
         </div>
 
-        {/* Botão de Próxima Pergunta - Alinhado à direita/largura como no Figma */}
-        <div className="w-full flex justify-end mt-6">
-          {answered && (
+        {/* Botão de Próxima Pergunta - Espaço reservado com altura fixa para não deslocar os cards e com animação fluida */}
+        <div className="w-full flex justify-end mt-4 h-14 items-center">
+          {answered ? (
             <button
               type="button"
               data-testid="btn-next"
               onClick={handleNextQuestion}
-              className="w-full md:w-auto min-w-[200px] py-3.5 px-8 rounded-full font-bold text-white text-sm uppercase tracking-wider bg-trivia-green hover:bg-[#28b07e] shadow-lg hover:shadow-glow-green active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-2"
+              className="w-full md:w-auto min-w-[200px] py-3.5 px-8 rounded-full font-bold text-white text-sm uppercase tracking-wider bg-trivia-green hover:bg-[#28b07e] shadow-lg hover:shadow-glow-green active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-2 animate-pop-in"
             >
               <span>{questionIndex + 1 === totalQuestions ? 'FINALIZAR' : 'PRÓXIMA'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+          ) : (
+            <div className="hidden md:block h-14" aria-hidden="true" />
           )}
         </div>
       </main>
+
+
 
       {/* Indicador de Pergunta atual */}
       <footer className="relative z-10 text-xs text-white/50 font-medium">

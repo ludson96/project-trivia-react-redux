@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom';
+import axios from 'axios';
+import { vi } from 'vitest';
 
 const defaultQuestions = {
   response_code: 0,
@@ -46,8 +48,6 @@ const defaultQuestions = {
   ]
 };
 
-import axios from 'axios';
-
 vi.mock('axios', () => {
   const mockAxiosInstance = {
     get: vi.fn().mockImplementation((url: string) => {
@@ -72,7 +72,7 @@ vi.mock('axios', () => {
 });
 
 // Mock global fetch para testes que simulam fluxo sem interceptação Axios direta
-global.fetch = vi.fn().mockImplementation((url: string) => {
+(globalThis as any).fetch = vi.fn().mockImplementation((url: string) => {
   if (url.includes('api_token.php')) {
     return Promise.resolve({
       json: () => Promise.resolve({ response_code: 0, token: 'mock-token-12345' }),
