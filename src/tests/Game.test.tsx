@@ -72,17 +72,17 @@ describe ('Test Game page', () => {
     }
   };
 
-  jest.setTimeout(50000)
+  // Vitest timeout
+
 
   test ('Verifica se btn estão na tela e se estão habilitados ou desabilitados', async () => {
     renderWithRouterAndRedux(<Game />, INITIAL_STATE);
-    const btnCorrect = screen.getByText('Scarlett Johansson');
+    const btnCorrect = screen.getByRole('button', { name: /Scarlett Johansson/i });
     expect(btnCorrect).toBeInTheDocument();
-    expect (btnCorrect).toBeEnabled();
+    expect(btnCorrect).toBeEnabled();
   
-  await (waitFor(() => expect(btnCorrect).toBeDisabled(), {timeout:35000}))
-
-  })
+    await (waitFor(() => expect(btnCorrect).toBeDisabled(), { timeout: 35000 }));
+  }, 40000);
 
   test ('Verifica se btn next está na tela e se ao ser clicado vai para /feedback', async () => {
    const { history } = renderWithRouterAndRedux(

@@ -1,63 +1,48 @@
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-trivia-bg text-slate-800 font-['Poppins',sans-serif] min-h-screen antialiased selection:bg-trivia-green selection:text-white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
-.App {
-  text-align: center;
+/* Custom animation for floating question marks */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
 }
 
-.App-logo {
-  height: 15vmin;
-  pointer-events: none;
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-3deg);
+  }
 }
 
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+/* Compatibilidade com classes de testes originais para manter cobertura 100% */
 .red-border {
-  border: 1px solid red;
+  border: 3px solid #EA5D5D !important;
 }
 
 .green-border {
-  border: 1px solid green;
-}
-
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: shake infinite 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  }
-}
-
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes shake {
-
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
+  border: 3px solid #2FC18C !important;
 }

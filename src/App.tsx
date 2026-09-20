@@ -6,19 +6,21 @@ import Game from './Pages/Game';
 import Config from './Pages/Config';
 import Feedback from './Components/Feedback';
 import Ranking from './Pages/Ranking';
+import store from './redux/store';
 import './App.css';
-import store from './redux/store/index';
 
-export default function App() {
+export const App: React.FC = () => {
   return (
-    <Provider store={ store }>
+    <Provider store={store}>
       <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route path="/game" component={ Game } />
-        <Route path="/config" component={ Config } />
-        <Route path="/feedback" component={ Feedback } />
-        <Route path="/ranking" component={ Ranking } />
+        <Route exact path="/" component={Login} />
+        <Route path="/game" component={Game} />
+        <Route path="/config" component={Config} />
+        <Route path="/feedback" component={Feedback} />
+        <Route path="/ranking" component={Ranking} />
       </Switch>
     </Provider>
   );
-}
+};
+
+export default App;

@@ -1,95 +1,118 @@
-# Repositório do projeto de Trivia 🎲
+# Trivia Game 🎲
 
-# 🚧 Estilização em desenvolvimento ! 🚧
+Um jogo moderno e interativo de perguntas e respostas desenvolvido em **React 17**, **TypeScript**, **Redux**, **Tailwind CSS**, **Axios** e **Vitest**, consumindo a API pública do [Open Trivia Database (OpenTDB)](https://opentdb.com/).
 
-## Módulo: Front-end
+O projeto foi projetado com foco em **UI/UX de alto nível**, seguindo protótipo vetorial com estética moderna, animações fluidas, responsividade total e integração em tempo real com o serviço **Gravatar**.
 
- Repositório possuí projeto desenvolvido no período que estive na **Trybe**, abordando conceitos de gerenciamento de estado com `Redux`, utilizando a metodologia `Kanban` em um grupo de alunos de 5 pessoas aqui na Trybe.
+---
 
-## Informações de aprendizados
+## 🚀 Demonstração Visual & Design
 
-- Este é um projeto desenvolvido para praticar `Redux` e metodologia `Kanban`;
-- Segundo projeto utilizando `Redux` e metodologia `Kanban`.
+- **Design System Fiel**: Paleta de cores com tema escuro imersivo (`#3C1B7A`, `#2FC18C`, `#EA5D5D`, `#F9BA18`, `#00D5E2`), background com pontos de interrogação flutuantes e efeitos de iluminação/glow.
+- **Lobby Interativo**: Validação dinâmica de entrada, detecção de e-mail e integração imediata com foto do Gravatar.
+- **Gameplay em Duas Colunas**:
+  - Painel de pergunta com badge de categoria, nível de dificuldade e cronômetro regressivo com contagem de 30 segundos.
+  - Alternativas estilo pílula com letras identificadoras (A, B, C, D) e feedback tátil/visual imediato (verde para acertos, vermelho para erros).
+- **Tela de Resultados (Feedback)**: Painel de assertividade e pontuação com avatar estilizado e mensagem adaptativa de desempenho (*"MANDOU BEM!"* vs *"PODIA SER MELHOR..."*).
+- **Leaderboard (Ranking)**: Histórico dos melhores desempenhos salvo no `LocalStorage` com medalhas de pódio, data da partida e suporte à limpeza de dados.
+- **Configurações Avançadas**: Escolha de categorias dinâmicas da OpenTDB, níveis de dificuldade e formatos de questão (Múltipla Escolha ou Verdadeiro/Falso).
 
-## Linguagens e ferramentas usadas
+---
 
-[![Git][Git-logo]][Git-url]
-[![ESLint][ESLint-logo]][ESLint-url]
-[![HTML5][HTML5-logo]][HTML5-url]
-[![CSS3][CSS3-logo]][CSS3-url]
-[![JavaScript][JavaScript-logo]][JavaScript-url]
-[![React][React-logo]][React-url]
-[![RTL][RTL-logo]][RTL-url]
+## 🛠️ Tecnologias e Ferramentas
 
-## O que foi desenvolvido
+- **Frontend**: [React](https://reactjs.org/) (Hooks funcionais)
+- **Tipagem**: [TypeScript](https://www.typescriptlang.org/) (Strict mode)
+- **Gerenciamento de Estado**: [Redux](https://redux.js.org/) & [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- **Estilização**: [Tailwind CSS](https://tailwindcss.com/) & [PostCSS](https://postcss.org/)
+- **Consumo de API**: [Axios](https://axios-http.com/)
+- **Testes Automatizados**: [Vitest](https://vitest.dev/), [React Testing Library](https://testing-library.com/) & `@testing-library/jest-dom`
+- **Ícones**: [Lucide React](https://lucide.dev/)
+- **Criptografia & Avatares**: [Crypto-JS (MD5)](https://cryptojs.gitbook.io/docs/) integrado ao [Gravatar API](https://gravatar.com/)
+- **Padronização**: [ESLint](https://eslint.org/)
 
-Neste projeto, desenvolvemos um jogo de perguntas e respostas baseado no jogo Trivia (tipo um show do milhão americano) utilizando React e Redux, desenvolvendo em grupo suas funcionalidades de acordo com as demandas definidas em um quadro Kanban. A partir dessas demandas, teremos uma aplicação onde a pessoa usuária poderá:
+---
 
-- Logar no jogo e, se o email tiver cadastro no site [Gravatar](https://pt.gravatar.com/), ter sua foto associada ao perfil da pessoa usuária;
-- Acessar a página referente ao jogo, onde se deverá escolher uma das respostas disponíveis para cada uma das perguntas apresentadas. A resposta deve ser marcada antes do contador de tempo chegar a zero, caso contrário a resposta deverá ser considerada errada.
-- Ser redirecionada, após 5 perguntas respondidas, para a tela de score, onde o texto mostrado depende do número de acertos.
-- Visualizar a página de ranking, se quiser, ao final de cada jogo.
-Configurar algumas opções para o jogo em uma tela de configuração acessível a partir do cabeçalho do app.
+## 📁 Arquitetura do Projeto
 
-Figma do protótipo final do projeto [figma](https://www.figma.com/file/59PXrUUfqaRT9P3oDsKVDS/%5BProjeto%5D%5BFrontend%5D-Trivia)
+```text
+src/
+├── Components/
+│   ├── AnswerButtons.tsx    # Alternativas com feedback visual e pontuação
+│   ├── Feedback.tsx         # Resumo de assertividade e pontos
+│   ├── Header.tsx           # Avatar do Gravatar, nome e placar
+│   ├── TriviaBackground.tsx # Fundo temático com interrogações em SVG
+│   └── TriviaLogo.tsx       # Logotipo vetorial oficial em SVG
+├── Pages/
+│   ├── Config.tsx           # Filtros de categoria, dificuldade e tipo
+│   ├── Game.tsx             # Motor da rodada de perguntas e timer
+│   ├── Login.tsx            # Lobby inicial com validação e setup de jogador
+│   └── Ranking.tsx          # Leaderboard persistido no LocalStorage
+├── redux/
+│   ├── actions/             # Actions tipadas e thunks com Axios
+│   ├── reducers/            # Reducers imutáveis
+│   └── store/               # Store configurada
+├── services/
+│   └── api.ts               # Cliente Axios com chamadas tipadas para a OpenTDB
+├── tests/
+│   ├── helpers/             # Helper renderWithRouterAndRedux para Vitest
+│   ├── Feedback.test.tsx    # Testes da página de Feedback
+│   ├── Game.test.tsx        # Testes de gameplay, timer e alternativas
+│   ├── Login.test.tsx       # Testes de autenticação e validações
+│   └── Ranking.test.tsx     # Testes do ranking e leaderboard
+├── types/
+│   └── index.ts             # Interfaces TypeScript de todo o domínio
+└── utils/
+    ├── decodeHtml.ts        # Sanitização de entidades HTML da API
+    └── gravatar.ts          # Geração dinâmica de hash MD5 para avatar
+```
 
-## Habilidades
+---
 
-Neste projeto, desenvolvi as seguintes habilidades:
+## ⚙️ Como Instalar e Rodar Localmente
 
-- Criar um store Redux em aplicações React;
-- Criar reducers no Redux em aplicações React;
-- Criar actions no Redux em aplicações React;
-- Criar dispatchers no Redux em aplicações React;
-- Conectar Redux aos componentes React;
-- Criar actions assíncronas na sua aplicação React que faz uso de Redux;
-- Escrever testes para garantir que sua aplicação possua uma boa cobertura de testes.
+### Pré-requisitos
+- [Node.js](https://nodejs.org/) (versão 16 ou superior)
+- [NPM](https://www.npmjs.com/)
 
-## Alguns dos requisitos que fiquei responsável e tive participação
+### Passo a passo
 
-- [Req. 06] - Crie a página de jogo que deve conter as informações relacionadas à pergunta
-- [Req. 10] - Crie um botão de "Next" (Próxima) que apareça após a resposta ser dada
-- Outros requisitos foram feitos em `pair programming`
+1. **Clone o repositório**:
+   ```bash
+   git clone git@github.com:Ludson96/project-trivia-react-redux.git
+   cd project-trivia-react-redux
+   ```
 
-## Instruções para instalar e rodar
+2. **Instale as dependências**:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-1. Clone o repo:
+3. **Inicie a aplicação**:
+   ```bash
+   npm start
+   ```
+   Abra [http://localhost:3000](http://localhost:3000) no seu navegador para jogar!
 
-    ```bash
-    git clone git@github.com:Ludson96/project-trivia-react-redux.git
-    ```
+---
 
-1. Entre na pasta do repositório que você acabou de clonar:
+## 🧪 Como Executar os Testes Automatizados
 
-    ```bash
-    cd project-trivia-react-redux
-    ```
+O projeto utiliza **Vitest** com o ecossistema React Testing Library:
 
-1. Instale as dependências:
+```bash
+# Executar todos os testes em modo run
+npm test
 
-    ```bash
-    npm install
-    ```
+# Executar testes em modo watch interativo
+npm run test:watch
 
-1. Execute a aplicação `React`:
+# Checagem de qualidade do código com ESLint
+npm run lint
+```
 
-    ```bash
-    npm start
-    ```
+---
 
-1. Toda a logica se na pasta `src`, para executar os testes basta usar o comando `npm test` para executar todos os testes ou `npm test <nome do teste>` para executar um teste especifico.
+## 📄 Licença
 
-[Git-logo]: https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white
-[Git-url]: https://git-scm.com
-[ESLint-logo]: https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white
-[ESLint-url]: https://eslint.org/
-[HTML5-logo]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
-[HTML5-url]: https://developer.mozilla.org/pt-BR/docs/Web/HTML
-[CSS3-logo]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
-[CSS3-url]: https://developer.mozilla.org/pt-BR/docs/Web/CSS
-[JavaScript-logo]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
-[JavaScript-url]: https://www.javascript.com/
-[React-logo]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
-[React-url]: https://reactjs.org
-[RTL-logo]: https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white
-[RTL-url]: https://testing-library.com/
+Este projeto é distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](file:///d:/Code/para%20o%20portfolio/project-trivia-react-redux/LICENSE) para mais detalhes.

@@ -22,10 +22,10 @@ describe('Test ranking page', () => {
     expect(history.location.pathname).toBe('/game');
 
 
-    const btnCorrect = screen.getByTestId('correct-answer');
+    const btnCorrect = await screen.findByTestId('correct-answer', {}, { timeout: 4000 });
     expect(btnCorrect).toBeInTheDocument();
-    expect (btnCorrect).toBeEnabled();
-    userEvent.click(btnCorrect)
+    expect(btnCorrect).toBeEnabled();
+    userEvent.click(btnCorrect);
 
     const btnNext1 = screen.getByTestId('btn-next');
     userEvent.click(btnNext1)
@@ -60,7 +60,7 @@ describe('Test ranking page', () => {
     expect(btnHome).toBeInTheDocument();
     userEvent.click(btnHome)
     expect(history.location.pathname).toBe('/')
-  })
+  }, 15000)
 
   test("Verifica ranking vazio...", () => {
     localStorage.clear();

@@ -1,9 +1,9 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouterAndRedux from './renderWithRouterAndRedux';
-import Login from '../../Pages/Login';
-import App from '../../App';
+import renderWithRouterAndRedux from './helpers/renderWithRouterAndRedux';
+import Login from '../Pages/Login';
+import App from '../App';
 
 const INITIAL_STATE = {
   name: '',
@@ -104,8 +104,12 @@ describe('Test login page', () => {
     userEvent.type(name, nameValid);
     userEvent.click(buttonPlay);
   
-    expect(store.getState().user.name).toEqual(nameValid); 
-    expect(store.getState().user.email).toEqual(emailValid); 
+    const state = store.getState();
+    const playerName = state.player?.name || state.user?.name;
+    const playerEmail = state.player?.email || state.user?.email;
+
+    expect(playerName).toEqual(nameValid); 
+    expect(playerEmail).toEqual(emailValid); 
   });
 })
 
