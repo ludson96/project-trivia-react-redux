@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getName, getEmail, fetchApi, fetchApiResult } from '../redux/actions';
 import TriviaLogo from '../Components/TriviaLogo';
-import LoginBackground from '../Components/LoginBackground';
+import TriviaBackground from '../Components/TriviaBackground';
 import { User, Mail, Settings, Play, Loader2 } from 'lucide-react';
 
 export const Login: React.FC = () => {
@@ -45,7 +45,7 @@ export const Login: React.FC = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
-      <LoginBackground />
+      <TriviaBackground />
 
       {/* Main Login Card - Exactly matches Figma layout */}
       <div className="relative z-10 w-full max-w-md flex flex-col items-center">

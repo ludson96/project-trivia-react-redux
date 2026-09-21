@@ -2,7 +2,8 @@ import React from 'react';
 
 /**
  * Renderiza o fundo temático oficial do Figma:
- * Gradiente roxo profundo com pontos de interrogação coloridos flutuantes com efeito glow/blur.
+ * Gradiente roxo profundo com pontos de interrogação coloridos flutuantes
+ * extraídos com precisão vetorial do arquivo oficial Figma SVG (login-bg.svg).
  */
 export const TriviaBackground: React.FC = () => {
   return (
@@ -10,42 +11,63 @@ export const TriviaBackground: React.FC = () => {
       {/* Dynamic base gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#3C1B7A] via-[#230E4E] to-[#160B2E]" />
 
-      {/* Decorative Question Marks with Glow & Blur matching Figma coordinates */}
-      {/* 1. Green Question Mark (Top Left) */}
-      <div className="absolute top-[10%] left-[8%] animate-float-slow opacity-60 filter blur-[1px]">
-        <svg width="120" height="150" viewBox="0 0 100 130" fill="none">
+      {/* SVG Filters para Blur e Glow fiel ao Figma */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+        <defs>
+          <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="glow-yellow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* 1. Green Question Mark (Top Left) - Vetor Oficial do Figma */}
+      <div className="absolute top-[8%] left-[6%] animate-float-slow opacity-75">
+        <svg width="150" height="220" viewBox="198 83 151 230" fill="none" style={{ filter: 'url(#glow-green)' }}>
           <path
-            d="M48 100 h12 v12 h-12 z M35 48 C35 32 42 22 55 22 C67 22 75 30 75 42 C75 50 70 56 64 61 L58 66 C55 69 54 73 54 78 L54 86 H42 L42 77 C42 71 45 66 50 61 L55 57 C59 54 61 50 61 44 C61 38 57 34 52 34 C46 34 43 38 42 45 Z"
+            d="M251.553 267.814L295.672 268.022L295.477 312.341L251.358 312.133L251.553 267.814ZM198 157.143C199.313 128.011 209.224 107.406 227.735 95.3267C239.415 87.6117 253.744 83.7942 270.72 83.8743C293.027 83.9796 311.509 89.5877 326.167 100.699C340.923 111.81 348.254 128.203 348.158 149.877C348.1 163.168 344.843 174.348 338.387 183.416C334.612 188.919 327.376 195.94 316.679 204.477L306.13 212.862C300.385 217.436 296.562 222.785 294.659 228.911C293.458 232.79 292.79 238.819 292.655 246.998L252.682 246.809C253.35 229.534 254.981 217.631 257.576 211.1C260.172 204.466 266.818 196.881 277.516 188.343L288.362 179.653C291.927 176.909 294.803 173.907 296.988 170.646C300.961 165.041 302.962 158.865 302.992 152.118C303.026 144.348 300.837 137.283 296.423 130.923C292.108 124.462 284.128 121.204 272.481 121.149C261.032 121.095 252.872 124.992 248.001 132.842C243.229 140.692 240.824 148.859 240.787 157.345L198 157.143Z"
             fill="#2FC18C"
           />
         </svg>
       </div>
 
-      {/* 2. Red / Coral Question Mark (Top Right) */}
-      <div className="absolute top-[12%] right-[10%] animate-float-reverse opacity-70 filter blur-[1.5px]">
-        <svg width="150" height="180" viewBox="0 0 100 130" fill="none">
+      {/* 2. Red / Coral Question Mark (Top Right) - Vetor Oficial do Figma */}
+      <div className="absolute top-[6%] right-[8%] animate-float-reverse opacity-75">
+        <svg width="115" height="160" viewBox="962 48 92 140" fill="none" style={{ filter: 'url(#glow-red)' }}>
           <path
-            d="M48 100 h12 v12 h-12 z M35 48 C35 32 42 22 55 22 C67 22 75 30 75 42 C75 50 70 56 64 61 L58 66 C55 69 54 73 54 78 L54 86 H42 L42 77 C42 71 45 66 50 61 L55 57 C59 54 61 50 61 44 C61 38 57 34 52 34 C46 34 43 38 42 45 Z"
+            d="M994.62 160.709L1021.49 160.836L1021.38 187.832L994.501 187.705L994.62 160.709ZM962 93.2973C962.8 75.5525 968.837 63.0013 980.112 55.6437C987.227 50.9444 995.955 48.6191 1006.3 48.6679C1019.88 48.732 1031.14 52.148 1040.07 58.9159C1049.06 65.6841 1053.52 75.6693 1053.46 88.8714C1053.43 96.9671 1051.44 103.777 1047.51 109.301C1045.21 112.653 1040.81 116.929 1034.29 122.13L1027.86 127.237C1024.36 130.023 1022.04 133.281 1020.88 137.012C1020.15 139.375 1019.74 143.048 1019.66 148.029L995.308 147.915C995.715 137.392 996.708 130.142 998.289 126.163C999.87 122.123 1003.92 117.502 1010.43 112.302L1017.04 107.009C1019.21 105.337 1020.96 103.509 1022.3 101.522C1024.72 98.1083 1025.93 94.3463 1025.95 90.2362C1025.97 85.5034 1024.64 81.2001 1021.95 77.3263C1019.32 73.3905 1014.46 71.4059 1007.37 71.3724C1000.39 71.3395 995.424 73.7137 992.457 78.4949C989.55 83.2764 988.085 88.2515 988.062 93.4203L962 93.2973Z"
             fill="#EA5D5D"
           />
         </svg>
       </div>
 
-      {/* 3. Cyan Question Mark (Bottom Left) */}
-      <div className="absolute bottom-[15%] left-[6%] animate-float-reverse opacity-65 filter blur-[1px]">
-        <svg width="130" height="160" viewBox="0 0 100 130" fill="none">
+      {/* 3. Cyan Question Mark (Bottom Left) - Vetor Oficial do Figma */}
+      <div className="absolute bottom-[10%] left-[5%] animate-float-reverse opacity-75">
+        <svg width="130" height="180" viewBox="74 312 104 160" fill="none" style={{ filter: 'url(#glow-cyan)' }}>
           <path
-            d="M48 100 h12 v12 h-12 z M35 48 C35 32 42 22 55 22 C67 22 75 30 75 42 C75 50 70 56 64 61 L58 66 C55 69 54 73 54 78 L54 86 H42 L42 77 C42 71 45 66 50 61 L55 57 C59 54 61 50 61 44 C61 38 57 34 52 34 C46 34 43 38 42 45 Z"
+            d="M111.091 440.262L141.647 440.407L141.512 471.139L110.956 470.995L111.091 440.262ZM74 363.52C74.9091 343.319 81.7738 329.03 94.5941 320.654C102.684 315.305 112.608 312.657 124.366 312.713C139.815 312.786 152.616 316.675 162.768 324.38C172.988 332.085 178.065 343.452 177.999 358.481C177.959 367.698 175.703 375.45 171.232 381.739C168.618 385.555 163.606 390.423 156.197 396.343L148.891 402.157C144.912 405.329 142.264 409.038 140.946 413.286C140.114 415.976 139.651 420.156 139.558 425.828L111.872 425.697C112.335 413.718 113.465 405.464 115.262 400.935C117.06 396.335 121.663 391.075 129.072 385.155L136.584 379.129C139.054 377.226 141.045 375.144 142.559 372.883C145.311 368.997 146.697 364.714 146.717 360.035C146.741 354.647 145.224 349.748 142.168 345.338C139.179 340.858 133.652 338.598 125.586 338.56C117.656 338.523 112.004 341.226 108.631 346.669C105.325 352.112 103.66 357.776 103.634 363.66L74 363.52Z"
             fill="#00D5E2"
           />
         </svg>
       </div>
 
-      {/* 4. Yellow Question Mark (Bottom Right) */}
-      <div className="absolute bottom-[18%] right-[8%] animate-float-slow opacity-60 filter blur-[1px]">
-        <svg width="90" height="120" viewBox="0 0 100 130" fill="none">
+      {/* 4. Yellow Question Mark (Bottom Right) - Vetor Oficial do Figma */}
+      <div className="absolute bottom-[8%] right-[7%] animate-float-slow opacity-75">
+        <svg width="150" height="220" viewBox="1029 263 151 229" fill="none" style={{ filter: 'url(#glow-yellow)' }}>
           <path
-            d="M48 100 h12 v12 h-12 z M35 48 C35 32 42 22 55 22 C67 22 75 30 75 42 C75 50 70 56 64 61 L58 66 C55 69 54 73 54 78 L54 86 H42 L42 77 C42 71 45 66 50 61 L55 57 C59 54 61 50 61 44 C61 38 57 34 52 34 C46 34 43 38 42 45 Z"
+            d="M1082.55 446.95L1126.67 447.158L1126.48 491.478L1082.36 491.27L1082.55 446.95ZM1029 336.28C1030.31 307.148 1040.22 286.542 1058.73 274.463C1070.42 266.748 1084.74 262.931 1101.72 263.011C1124.03 263.116 1142.51 268.724 1157.17 279.835C1171.92 290.947 1179.25 307.339 1179.16 329.014C1179.1 342.304 1175.84 353.484 1169.39 362.553C1165.61 368.056 1158.38 375.076 1147.68 383.614L1137.13 391.999C1131.39 396.572 1127.56 401.922 1125.66 408.047C1124.46 411.927 1123.79 417.956 1123.66 426.134L1083.68 425.945C1084.35 408.67 1085.98 396.767 1088.58 390.236C1091.17 383.603 1097.82 376.017 1108.52 367.48L1119.36 358.79C1122.93 356.046 1125.8 353.043 1127.99 349.782C1131.96 344.178 1133.96 338.002 1133.99 331.254C1134.03 323.484 1131.84 316.419 1127.42 310.06C1123.11 303.598 1115.13 300.34 1103.48 300.285C1092.03 300.231 1083.87 304.129 1079 311.978C1074.23 319.828 1071.82 327.996 1071.79 336.481L1029 336.28Z"
             fill="#F9BA18"
           />
         </svg>
@@ -56,5 +78,6 @@ export const TriviaBackground: React.FC = () => {
     </div>
   );
 };
+
 
 export default TriviaBackground;

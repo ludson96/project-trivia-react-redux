@@ -90,15 +90,16 @@ export const AnswerButtons: React.FC<AnswerButtonsProps> = ({
     <div className="w-full flex flex-col md:flex-row gap-6 items-stretch">
       {/* Coluna Esquerda: Card com Categoria flutuante no topo, Pergunta centralizada e Timer inferior (Design exato do Figma) */}
       <div className="flex-1 relative flex flex-col items-center">
-        {/* Badge de Tema / Categoria - Cor dinâmica por tema, flutuando no topo conforme Figma */}
+        {/* Badge de Tema / Categoria - Cor dinâmica por tema com tipografia padrão Poppins */}
         <div className={`z-20 -mb-6 w-[90%] max-w-[413px] h-[45px] ${getCategoryColor(currentQuestion.category)} shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-full flex items-center justify-center px-6 transition-colors duration-300`}>
           <span
             data-testid="question-category"
-            className="font-epilogue font-normal text-base text-white uppercase text-center tracking-[0.12em] leading-[150%] truncate"
+            className="font-semibold text-lg text-white uppercase text-center tracking-wider truncate"
           >
             {decodeHtml(currentQuestion.category)}
           </span>
         </div>
+
 
 
         {/* Card Branco da Pergunta */}
