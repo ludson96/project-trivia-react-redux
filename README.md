@@ -7,7 +7,6 @@
 [![Vite 8.3](https://img.shields.io/badge/Vite-8.3.0-646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Axios 1.2](https://img.shields.io/badge/Axios-1.2.0-5A29E4.svg?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
 [![Vitest 5.0](https://img.shields.io/badge/Vitest-5.0.1-6E9F18.svg?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 > 🇧🇷 **Português** | 🇺🇸 [**English Version**](README.en.md)
 
@@ -25,7 +24,6 @@ Um jogo dinâmico e interativo de perguntas e respostas com ranking em tempo rea
 - [📁 Estrutura do Repositório](#-estrutura-do-repositório)
 - [💡 Decisões Técnicas](#-decisões-técnicas)
 - [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
-- [📄 Licença](#-licença)
 
 ## 📝 Sobre o Projeto
 
@@ -240,10 +238,6 @@ npm run lint
 ```bash
 npm run build
 ```
-
-## 📄 Licença
-
-Este projeto está sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 <div align="center">
   Desenvolvido por <strong>Ludson Pereira dos Santos</strong> 🚀<br />
